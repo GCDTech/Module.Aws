@@ -1,0 +1,17 @@
+{
+  "name": "gcdtech/module.aws",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "Gcdtech\\Aws\\": "src/"
+    }
+  },
+  "require": {
+    "rhubarbphp/rhubarb": "^1.0.0",
+    "aws/aws-sdk-php": "^3.21"
+  },
+  "config": {
+    "bin-dir": "bin/"
+  }
+}
