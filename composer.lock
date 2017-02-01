@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4135e167e7b1afba5de943592c4eb6b1",
-    "content-hash": "d6898cc298410f5f8d394ef4b36e68e9",
+    "hash": "6529277a2847e3903910c9dc1bc4a5dc",
+    "content-hash": "ec047db943a9df9a3e525905544d1570",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.21.5",
+            "version": "3.21.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "adaabe1e1b2c29a8748e52146194ab42222df8b5"
+                "reference": "b51512a4ad4aa080ab963942a1e234265771fcde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/adaabe1e1b2c29a8748e52146194ab42222df8b5",
-                "reference": "adaabe1e1b2c29a8748e52146194ab42222df8b5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/b51512a4ad4aa080ab963942a1e234265771fcde",
+                "reference": "b51512a4ad4aa080ab963942a1e234265771fcde",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,50 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2017-01-25 22:06:08"
+            "time": "2017-01-27 00:34:55"
+        },
+        {
+            "name": "firebase/php-jwt",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "reference": "dccf163dc8ed7ed6a00afc06c51ee5186a428d35",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "time": "2016-07-18 04:51:16"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -365,19 +408,20 @@
         },
         {
             "name": "rhubarbphp/rhubarb",
-            "version": "1.1.19",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RhubarbPHP/Rhubarb.git",
-                "reference": "e57bafcb0062301e9e8f883deb3c483797af37ef"
+                "reference": "3d781cf80dd944293060dc530219406bbe43603d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RhubarbPHP/Rhubarb/zipball/e57bafcb0062301e9e8f883deb3c483797af37ef",
-                "reference": "e57bafcb0062301e9e8f883deb3c483797af37ef",
+                "url": "https://api.github.com/repos/RhubarbPHP/Rhubarb/zipball/3d781cf80dd944293060dc530219406bbe43603d",
+                "reference": "3d781cf80dd944293060dc530219406bbe43603d",
                 "shasum": ""
             },
             "require": {
+                "firebase/php-jwt": "^4.0",
                 "php": ">=5.6.0"
             },
             "require-dev": {
@@ -408,7 +452,7 @@
                 "framework",
                 "php"
             ],
-            "time": "2017-01-26 09:47:46"
+            "time": "2017-02-01 21:12:14"
         }
     ],
     "packages-dev": [],
