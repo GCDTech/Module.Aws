@@ -3,6 +3,7 @@
 namespace Gcdtech\Aws\Settings;
 
 use Aws\Credentials\CredentialProvider;
+use Rhubarb\Crown\Exceptions\RhubarbException;
 use Rhubarb\Crown\Exceptions\SettingMissingException;
 use Rhubarb\Crown\Settings;
 
@@ -32,6 +33,12 @@ class AwsSettings extends Settings
     {
         if (!$this->region){
             throw new SettingMissingException("AwsSettings", "region");
+        }
+
+        if (!empty($this->profile) && !empty($this->iniCredentialsFile)) {
+            $exception = new RhubarbException("The settings profile and iniCredentialsFile cannot both be set. Due to the Amazon SDK presuming
+             the credentials file will be in the profile's home directory and will not look in any other location");
+            throw $exception;
         }
 
         $settings = [
