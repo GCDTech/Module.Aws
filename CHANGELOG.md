@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.2
+
+* Added:    Check for issue if both the profile and iniCredentialsFile are set
+
 ### 1.0.1
 
 * Added:    Added SSL verification settings
