@@ -14,6 +14,9 @@ class AwsSettings extends Settings
 
     public $iniCredentialsFile = "";
 
+    public $credentialsAccessKeyId = "";
+    public $credentialsSecretAccessKey = "";
+
     /**
      * Provide a path to a custom CA bundle if required
      *
@@ -35,8 +38,8 @@ class AwsSettings extends Settings
             throw new SettingMissingException("AwsSettings", "region");
         }
 
-        if (!empty($this->profile) && !empty($this->iniCredentialsFile)) {
-            $exception = new RhubarbException("The settings profile and iniCredentialsFile cannot both be set. Due to the Amazon SDK presuming
+        if (!empty($this->profile) && (!empty($this->iniCredentialsFile) || !empty($this->credentialsAccessKeyId))) {
+            $exception = new RhubarbException("The settings profile and either iniCredentialsFile or credentialsAccessKeyId cannot both be set. Due to the Amazon SDK presuming
              the credentials file will be in the profile's home directory and will not look in any other location");
             throw $exception;
         }
@@ -53,6 +56,11 @@ class AwsSettings extends Settings
         if ($this->iniCredentialsFile){
             $provider = CredentialProvider::ini($this->profile, $this->iniCredentialsFile);
             $settings['credentials'] = $provider;
+        } else if($this->credentialsAccessKeyId && $this->credentialsSecretAccessKey) {
+            $settings['credentials'] = [
+                'key'    => $this->credentialsAccessKeyId,
+                'secret' => $this->credentialsSecretAccessKey
+            ];
         }
 
         return array_merge($settings, $additionalSettings);

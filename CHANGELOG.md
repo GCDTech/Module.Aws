@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.0.3
+
+* Added:    Add support for authentication using access key and secret
+
 ### 1.0.2
 
 * Added:    Check for issue if both the profile and iniCredentialsFile are set
