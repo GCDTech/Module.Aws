@@ -17,6 +17,10 @@ class AwsSettings extends Settings
     public $credentialsAccessKeyId = "";
     public $credentialsSecretAccessKey = "";
 
+    public $iamRoleAuthentication = false;
+
+    public $endpoint;
+
     /**
      * Provide a path to a custom CA bundle if required
      *
@@ -34,7 +38,7 @@ class AwsSettings extends Settings
 
     public function getClientSettings($additionalSettings = [])
     {
-        if (!$this->region){
+        if (!$this->region) {
             throw new SettingMissingException("AwsSettings", "region");
         }
 
@@ -48,19 +52,27 @@ class AwsSettings extends Settings
             'version' => 'latest',
             'region' => $this->region,
             'profile' => $this->profile,
-            'http'    => [
-                'verify' => ($this->sslVerify ? ($this->sslCaBundlePemPath ? $this->sslCaBundlePemPath : true) : false)
-            ]
+            'http' => [
+                'verify' => ($this->sslVerify ? ($this->sslCaBundlePemPath ? $this->sslCaBundlePemPath : true) : false),
+            ],
         ];
 
-        if ($this->iniCredentialsFile){
-            $provider = CredentialProvider::ini($this->profile, $this->iniCredentialsFile);
-            $settings['credentials'] = $provider;
-        } else if($this->credentialsAccessKeyId && $this->credentialsSecretAccessKey) {
-            $settings['credentials'] = [
-                'key'    => $this->credentialsAccessKeyId,
-                'secret' => $this->credentialsSecretAccessKey
-            ];
+        if ($this->endpoint) {
+            $settings['endpoint'] = $this->endpoint;
+        }
+
+        if (!$this->iamRoleAuthentication) {
+            if ($this->iniCredentialsFile) {
+                $provider = CredentialProvider::ini($this->profile, $this->iniCredentialsFile);
+                $settings['credentials'] = $provider;
+            } else {
+                if ($this->credentialsAccessKeyId && $this->credentialsSecretAccessKey) {
+                    $settings['credentials'] = [
+                        'key' => $this->credentialsAccessKeyId,
+                        'secret' => $this->credentialsSecretAccessKey,
+                    ];
+                }
+            }
         }
 
         return array_merge($settings, $additionalSettings);
