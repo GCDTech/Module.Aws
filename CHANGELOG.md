@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.0.4
+
+* Added: Support for IAM Role authentication
+* Added: Endpoint override setting
+
 ### 1.0.3
 
 * Added:    Add support for authentication using access key and secret
